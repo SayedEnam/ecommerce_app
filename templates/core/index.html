@@ -1160,10 +1160,11 @@
                                     <div id="new-arrivals-slider" class="product-flexslider hidden-buttons">
                                         <div class="home-block-inner"> </div>
                                         <div class="slider-items slider-width-col4 products-grid block-content">
+                                            {% for p in products %}
                                             <div class="item">
                                                 <div class="item-inner">
                                                     <div class="item-img">
-                                                        <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="Retis lapen casen" src="{% static 'assets/products-images/product10.jpg' %}"> </a>
+                                                        <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="Retis lapen casen" src="{{ p.image.url }}"> </a>
                                                             <div class="new-label new-top-right">new</div>
                                                             <div class="box-hover">
                                                                 <ul class="add-to-links">
@@ -1176,7 +1177,7 @@
                                                     </div>
                                                     <div class="item-info">
                                                         <div class="info-inner">
-                                                            <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html"> Retis lapen casen </a> </div>
+                                                            <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html"> {{ p.title }} </a> </div>
                                                             <div class="rating">
                                                                 <div class="ratings">
                                                                     <div class="rating-box">
@@ -1187,45 +1188,11 @@
                                                             </div>
                                                             <div class="item-content">
                                                                 <div class="item-price">
-                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$245.00</span> </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="action">
-                                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Item -->
-                                            <div class="item">
-                                                <div class="item-inner">
-                                                    <div class="item-img">
-                                                        <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="Retis lapen casen" src="{% static 'assets/products-images/product11.jpg' %}"> </a>
-                                                            <div class="box-hover">
-                                                                <ul class="add-to-links">
-                                                                    <li><a class="link-quickview" href="quick_view.html"></a></li>
-                                                                    <li><a class="link-wishlist" href="wishlist.html"></a></li>
-                                                                    <li><a class="link-compare" href="compare.html"></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="info-inner">
-                                                            <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html"> Retis lapen casen </a> </div>
-                                                            <div class="item-content">
-                                                                <div class="rating">
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating width80"></div>
-                                                                        </div>
-                                                                        <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-price">
-                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$155.00</span> </span>
+                                                                    <div class="price-box">
+                                                                        {% if p.old_price %}
+                                                                        <span class="regular-price">${{ p.old_price }}</span>
+                                                                        {% endif %}
+                                                                        <span class="price">${{ p.price }}</span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="action">
@@ -1237,198 +1204,7 @@
                                                 </div>
                                             </div>
                                             <!-- End Item -->
-                                            <!-- Item -->
-                                            <div class="item">
-                                                <div class="item-inner">
-                                                    <div class="item-img">
-                                                        <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="Retis lapen casen" src="{% static 'assets/products-images/product12.jpg' %}"> </a>
-                                                            <div class="box-hover">
-                                                                <ul class="add-to-links">
-                                                                    <li><a class="link-quickview" href="quick_view.html"></a></li>
-                                                                    <li><a class="link-wishlist" href="wishlist.html"></a></li>
-                                                                    <li><a class="link-compare" href="compare.html"></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="info-inner">
-                                                            <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html"> Retis lapen casen </a> </div>
-                                                            <div class="item-content">
-                                                                <div class="rating">
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating width80"></div>
-                                                                        </div>
-                                                                        <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-price">
-                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$185.00</span> </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="action">
-                                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Item -->
-                                            <div class="item">
-                                                <div class="item-inner">
-                                                    <div class="item-img">
-                                                        <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="Retis lapen casen" src="{% static 'assets/products-images/product13.jpg' %}"> </a>
-                                                            <div class="new-label new-top-left">new</div>
-                                                            <div class="box-hover">
-                                                                <ul class="add-to-links">
-                                                                    <li><a class="link-quickview" href="quick_view.html"></a></li>
-                                                                    <li><a class="link-wishlist" href="wishlist.html"></a></li>
-                                                                    <li><a class="link-compare" href="compare.html"></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="info-inner">
-                                                            <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html"> Retis lapen casen </a> </div>
-                                                            <div class="item-content">
-                                                                <div class="rating">
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating width80"></div>
-                                                                        </div>
-                                                                        <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-price">
-                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$235.00</span> </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="action">
-                                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Item -->
-                                            <div class="item">
-                                                <div class="item-inner">
-                                                    <div class="item-img">
-                                                        <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="Retis lapen casen" src="{% static 'assets/products-images/product14.jpg' %}"> </a>
-                                                            <div class="box-hover">
-                                                                <ul class="add-to-links">
-                                                                    <li><a class="link-quickview" href="quick_view.html"></a></li>
-                                                                    <li><a class="link-wishlist" href="wishlist.html"></a></li>
-                                                                    <li><a class="link-compare" href="compare.html"></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="info-inner">
-                                                            <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html"> Retis lapen casen </a> </div>
-                                                            <div class="item-content">
-                                                                <div class="rating">
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating width80"></div>
-                                                                        </div>
-                                                                        <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-price">
-                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$225.00</span> </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="action">
-                                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Item -->
-                                            <div class="item">
-                                                <div class="item-inner">
-                                                    <div class="item-img">
-                                                        <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="Retis lapen casen" src="{% static 'assets/products-images/product16.jpg' %}"> </a>
-                                                            <div class="box-hover">
-                                                                <ul class="add-to-links">
-                                                                    <li><a class="link-quickview" href="quick_view.html"></a></li>
-                                                                    <li><a class="link-wishlist" href="wishlist.html"></a></li>
-                                                                    <li><a class="link-compare" href="compare.html"></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="info-inner">
-                                                            <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html"> Retis lapen casen </a> </div>
-                                                            <div class="item-content">
-                                                                <div class="rating">
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating width80"></div>
-                                                                        </div>
-                                                                        <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-price">
-                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$335.00</span> </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="action">
-                                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Item -->
-                                            <div class="item">
-                                                <div class="item-inner">
-                                                    <div class="item-img">
-                                                        <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="Retis lapen casen" src="{% static 'assets/products-images/product10.jpg' %}"> </a>
-                                                            <div class="box-hover">
-                                                                <ul class="add-to-links">
-                                                                    <li><a class="link-quickview" href="quick_view.html"></a></li>
-                                                                    <li><a class="link-wishlist" href="wishlist.html"></a></li>
-                                                                    <li><a class="link-compare" href="compare.html"></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="info-inner">
-                                                            <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html"> Retis lapen casen </a> </div>
-                                                            <div class="item-content">
-                                                                <div class="rating">
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating width80"></div>
-                                                                        </div>
-                                                                        <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-price">
-                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="action">
-                                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Item -->
+                                             {% endfor %}
                                         </div>
                                     </div>
                                 </div>

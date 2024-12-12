@@ -25,7 +25,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/jquery.mobile-menu.css' %}">
  
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" media="all">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/revslider.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}" media="all">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/util.css' %}">
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600,800,400' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet' type='text/css'>
@@ -68,7 +69,7 @@
                                     <div class="check"><a title="Checkout" href="wishlist.html"><span class="hidden-xs">Wishlist</span></a> </div>
                                     <div class="demo"><a title="Blog" href="blog.html"><span class="hidden-xs">Blog</span></a> </div>
                                     <!-- Header Company -->
-                                    <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#"> Company <span class="caret"></span></a>
+                                    <!-- <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#"> Company <span class="caret"></span></a>
                                         <ul class="dropdown-menu">
                                             <li role="presentation"><a href="about_us.html"> About Us </a></li>
                                             <li role="presentation"><a href="#"> Customer Service </a></li>
@@ -77,9 +78,21 @@
                                             <li role="presentation"><a href="#">Search Terms </a></li>
                                             <li role="presentation"><a href="#">Advanced Search </a></li>
                                         </ul>
+                                    </div> -->
+                                    <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#"> Category <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            {% for c in categories %}
+                                            <li role="presentation"><a href="{% url 'core:category-product-list-view' c.cid %}"> {{ c.title }} </a></li>
+                                            {% endfor %}
+                                            <li role="presentation"><a href="{% url 'core:categories-list' %}"> All Categories </a></li>
+                                        </ul>
                                     </div>
                                     <!-- End Header Company -->
-                                    <div class="login"><a href="login.html"><span class="hidden-xs">Log In</span></a> </div>
+                                    {% if request.user.is_authenticated %}
+                                     <div class="login"><a href="{% url 'userauthentications:sign-out' %}"><span class="hidden-xs">Log Out</span></a></div>
+                                    {% else %}
+                                    <div class="login"><a href="{% url 'userauthentications:sign-in' %}"><span class="hidden-xs">Log In</span></a></div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <!-- End Header Top Links -->
@@ -162,7 +175,7 @@
                                             <div class="wrap-popup column1">
                                                 <div class="popup">
                                                     <ul class="nav">
-                                                        <li><a href="index.html">Home Version 1</a></li>
+                                                        <li><a href="index.html">Home Version</a></li>
                                                         <li><a href="../blue/newsletter.html">Home Version 2</a></li>
                                                         <li><a href="../green/newsletter.html">Home Version 3</a></li>
                                                         <li><a href="../yellow/newsletter.html">Home Version 4</a></li>
@@ -371,7 +384,20 @@
                     </div>
                 </div>
             </nav>
+             <!-- messages.html -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
         </header>
+       <script>
+            setTimeout(()=>{
+                $(".alert").alert("close");
+            }, 3000)
+       </script>
         <!-- end header -->
 
     {% block content %}
@@ -445,9 +471,9 @@
                         <h4>contact us</h4>
                         <div class="contacts-info">
                             <address>
-          <i class="add-icon">&nbsp;</i>123 Main Street, Anytown, <br>
-          &nbsp;CA 12345  USA
-          </address>
+                            <i class="add-icon">&nbsp;</i>123 Main Street, Anytown, <br>
+                            &nbsp;CA 12345  USA
+                            </address>
                             <div class="phone-footer"><i class="phone-icon">&nbsp;</i> +1 800 123 1234</div>
                             <div class="email-footer"><i class="email-icon">&nbsp;</i> <a href="mailto:desphixs@gmail.com</a> </div>
                         </div>
@@ -512,7 +538,7 @@
         </li>
         <li><a href="index.html">Home</a>
             <ul>
-                <li><a href="index.html">Home Version 1</a></li>
+                <li><a href="index.html">Home Version</a></li>
                 <li><a href="../blue/newsletter.html">Home Version 2</a></li>
                 <li><a href="../green/newsletter.html">Home Version 3</a></li>
                 <li><a href="../yellow/newsletter.html">Home Version 4</a></li>
@@ -714,7 +740,7 @@
                 </li>
                 <li><a href="grid.html">Bedroom</a>
                     <ul>
-                        <li><a href="grid.html">Beds</a></li>
+                        <li><a href="grid.html">Bedss</a></li>
                         <li><a href="grid.html">Chest of Drawers</a></li>
                         <li><a href="grid.html">Wardrobes &amp; Almirahs</a></li>
                         <li><a href="grid.html">Nightstands</a></li>
@@ -741,8 +767,17 @@
             <li><a title="Blog" href="blog.html"><span>Blog</span></a></li>
             <li class="last"><a title="Login" href="login.html"><span>Login</span></a></li>
         </ul>
+        <!-- messages.html -->
+        {% if messages %}
+        <ul class="alert alert-success">
+            {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     </div>
 </div>
+
 <!-- JavaScript -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

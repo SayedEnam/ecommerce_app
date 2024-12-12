@@ -1,11 +1,18 @@
 jQuery(document).ready(function() {
         "use strict";
         /* Mega Menu Title */
-        jQuery("#mega-menu-title").on("click", function() {
-                jQuery("#mega-menu-category").is(":visible") ?
-                    jQuery("#mega-menu-category").slideUp() :
-                    jQuery("#mega-menu-category").slideDown()
-            }),
+            // jQuery("#mega-menu-title").on("click", function() {
+            //     jQuery("#mega-menu-category").is(":visible") ?
+            //         jQuery("#mega-menu-category").slideUp() :
+            //         jQuery("#mega-menu-category").slideDown()
+            // }),
+            // Ensure the menu is hidden initially
+            jQuery("#mega-menu-category").hide();
+
+            // Toggle the menu when the title is clicked
+            jQuery("#mega-menu-title").on("click", function() {
+                jQuery("#mega-menu-category").toggle(); // This will show/hide the menu on each click
+            });
             /* Bestsell Products Slider */
             jQuery("#bestsell-slider .slider-items").owlCarousel({
                 items: 3,

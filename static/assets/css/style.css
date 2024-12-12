@@ -4503,7 +4503,8 @@ a.button.detail-bnt span {
 /* Regular price */
 
 .regular-price {
-    display: inline
+    display: inline;
+    text-decoration: line-through;
 }
 
 .regular-price .price {
