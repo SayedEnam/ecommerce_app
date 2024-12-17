@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.db.models import Count
 
-from core.models import Product, Category, Vendor, CartOrder, CartOrderItems, ProductImages, ProductReview, wishlist, Address
+from core.models import Product, Category, Brand, CartOrder, CartOrderItems, ProductImages, ProductReview, wishlist, Address
 
 
 def index(request):
@@ -42,3 +42,12 @@ def category_product_list_view(request, cid):
     }
 
     return render(request, "core/category-product-list-view.html", context)
+
+
+def brand_list_view(request):
+    brands = Brand.objects.all()
+
+    context = {
+        'brands': brands,
+    }
+    return render(request, 'core/brand-list-view.html', context)

@@ -46,11 +46,11 @@ class Category(models.Model):
 # class Tags(models.Model):
 #     pass
     
-class Vendor(models.Model):
-    vid = ShortUUIDField(unique=True, length=10, max_length=20, prefix="ven", alphabet="abcdef12345")
+class Brand(models.Model):
+    bid = ShortUUIDField(unique=True, length=10, max_length=20, prefix="bra", alphabet="abcdef12345")
     title = models.CharField(max_length=100, default="nestify")
-    image = models.ImageField(upload_to=user_directory_path, default="vendor.jpg")
-    description = models.TextField(null=True, blank=True, default="Vendor description")
+    image = models.ImageField(upload_to=user_directory_path, default="Brand.jpg")
+    description = models.TextField(null=True, blank=True, default="Brand description")
 
     address = models.CharField(max_length=100, default="123 Main Street")
     contact = models.CharField(max_length=100, default="+123 (456) 789")
@@ -65,9 +65,9 @@ class Vendor(models.Model):
 
 
     class Meta:
-        verbose_name_plural = "Vendor"
+        verbose_name_plural = "Brand"
 
-    def vendor_image(self):
+    def brand_image(self):
         return mark_safe('<img src="%s" width="50" height="50" />' % (self.image.url))
     
     def __str__(self):
@@ -79,7 +79,7 @@ class Product(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='category')
-    vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
+    brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True)
 
 
     title = models.CharField(max_length=100, default="Product Title")

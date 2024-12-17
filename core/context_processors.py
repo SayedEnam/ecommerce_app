@@ -1,8 +1,10 @@
-from core.models import Product, Category, Vendor, CartOrder, CartOrderItems, ProductImages, ProductReview, wishlist, Address
+from core.models import Product, Category, Brand, CartOrder, CartOrderItems, ProductImages, ProductReview, wishlist, Address
 
 def default(request):
     categories = Category.objects.all()
+    brands = Brand.objects.all()
 
     return {
-        'categories':categories
+        'categories':categories,
+        'brands':brands,
     }
