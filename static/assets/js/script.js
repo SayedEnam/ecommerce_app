@@ -102,8 +102,39 @@
         },
       }
     });
+
+    // product single page
+    var thumb_slider = new Swiper(".product-thumbnail-slider", {
+      slidesPerView: 5,
+      spaceBetween: 20,
+      // autoplay: true,
+      direction: "vertical",
+      breakpoints: {
+        0: {
+          direction: "horizontal"
+        },
+        992: {
+          direction: "vertical"
+        },
+      },
+    });
+
+    var large_slider = new Swiper(".product-large-slider", {
+      slidesPerView: 1,
+      // autoplay: true,
+      spaceBetween: 0,
+      effect: 'fade',
+      thumbs: {
+        swiper: thumb_slider,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
   }
 
+  // input spinner
   var initProductQty = function(){
 
     $('.product-qty').each(function(){

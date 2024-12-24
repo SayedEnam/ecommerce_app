@@ -1,50 +1,44 @@
 {% extends 'partials/base.html' %}
 {% load static %}
 {% block content %}
-<div class="limiter">
-    <div class="container-login100">
-        <div class="wrap-login100">
-            <form class="login100-form validate-form">
-                <span class="login100-form-title p-b-26">
-                    Login
-                </span>
-                <span class="login100-form-title p-b-48">
-                    <i class="zmdi zmdi-font"></i>
-                </span>
-
-                <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-                    <input class="input100" type="text" name="email" required>
-                    <span class="focus-input100" data-placeholder="Email"></span>
-                </div>
-
-                <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <span class="btn-show-pass">
-                        <i class="zmdi zmdi-eye"></i>
-                    </span>
-                    <input class="input100" type="password" name="pass" required>
-                    <span class="focus-input100" data-placeholder="Password"></span>
-                </div>
-
-                <div class="container-login100-form-btn">
-                    <div class="wrap-login100-form-btn">
-                        <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn">
-                            Login
-                        </button>
-                    </div>
-                </div>
-
-                <div class="text-center p-t-115">
-                    <span class="txt1">
-                        Dont have an account?
-                    </span>
-
-                    <a class="txt2" href="{% url 'userauthentications:sign-up' %}">
-                        Sign Up
-                    </a>
-                </div>
-            </form>
+<section class="py-5 mb-5" style="background: url(images/background-pattern.jpg);">
+    <!-- <div class="container-fluid">
+      <div class="d-flex justify-content-between">
+        <h1 class="page-title pb-2">Login</h1>
+        <nav class="breadcrumb fs-6">
+          <a class="breadcrumb-item nav-link" href="#">Home</a>
+          <a class="breadcrumb-item nav-link" href="#">Pages</a>
+          <span class="breadcrumb-item active" aria-current="page">Checkout</span>
+        </nav>
+      </div>
+    </div> -->
+    <div class="container-sm">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 p-5 bg-white border shadow-sm">
+          <h5 class="text-uppercase mb-4">Login</h5>
+          <form method="POST">
+            {% csrf_token %}
+            <div class="col-12 pb-3">
+              <label class="d-none">Email address *</label>
+              <input type="text" name="email" placeholder="email" class="form-control" required>
+            </div>
+            <div class="col-12 pb-3">
+              <label class="d-none">Password *</label>
+              <input type="password" name="password" placeholder="Password" class="form-control" required>
+            </div>
+            <!-- <div class="col-12 pb-3">
+              <label>
+                <input type="checkbox" required="">
+                <span class="label-body">Remember me</span>
+              </label>
+            </div> -->
+            <div class="col-12">
+              <button type="submit" name="submit" class="btn btn-primary text-uppercase w-100">Log in</button>
+              <p><a href="{% url 'userauthentications:sign-up' %}">Don't have an account? You can register.</a></p>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
-</div>
+</section>
 {% endblock content %}

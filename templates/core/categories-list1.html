@@ -1,0 +1,52 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="featured-pro-block">
+    <div class="slider-items-products">
+        <div class="new-arrivals-block">
+            <div class="block-title">
+                <h2>Categories</h2>
+            </div>
+            <div id="new-arrivals-slider" class="product-flexslider hidden-buttons">
+                <div class="home-block-inner"> </div>
+                <div class="slider-items slider-width-col4 products-grid block-content">
+                {% for c in categories %}
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-img">
+                                <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="Retis lapen casen" src="{{ c.image.url }}"> </a>
+                                </div>
+                            </div>
+                            <div class="item-info">
+                                <div class="info-inner">
+                                    <div class="item-title"> <a title="Retis lapen casen" href="{% url 'core:category-product-list-view' c.cid %}"> {{ c.title }} </a> </div>
+                                    <div class="item-content">
+                                        <div class="item-price">
+                                            <div class="price-box">
+                                                <span class="price">{{ c.category.count }} Product{{ c.category.count|pluralize }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Item -->
+                {% endfor %}
+                </div>
+                <div>
+                    <ul>
+                        {% for c in categories %}
+                        <li>{{ c.title }} <span>{{ c.category.count }}</span></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+
+{% if form.errors %}
+    <strong>Errror</strong>
+{% endif %}
+
+
+<form method="post" method="POST">
+    {% csrf_token %}
+
+    {{form.username}}
+    {{form.email}}
+    {{form.password1}}
+    {{form.password2}}
+    
+    <button type="submit">Submit</button>
+</form>
+<p>you can <a href="{% url 'userauthentications:sign-in' %}">login</a></p>

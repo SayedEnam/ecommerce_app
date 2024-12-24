@@ -69,6 +69,9 @@
         <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 24 24">
           <path fill="currentColor" d="M15.71 12.71a6 6 0 1 0-7.42 0a10 10 0 0 0-6.22 8.18a1 1 0 0 0 2 .22a8 8 0 0 1 15.9 0a1 1 0 0 0 1 .89h.11a1 1 0 0 0 .88-1.1a10 10 0 0 0-6.25-8.19ZM12 12a4 4 0 1 1 4-4a4 4 0 0 1-4 4Z"/>
         </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="sign-out" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M16 12l-4-4v3H4v2h8v3l4-4zm-6 8H6c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2h4V2H6C4.34 2 3 3.34 3 5v14c0 1.66 1.34 3 3 3h4v-2z"/>
+        </symbol>        
         <symbol xmlns="http://www.w3.org/2000/svg" id="close" viewBox="0 0 15 15">
           <path fill="currentColor" d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z"/>
         </symbol>
@@ -180,11 +183,19 @@
             </div>
 
             <ul class="d-flex justify-content-end list-unstyled m-0">
+              {% if request.user.is_authenticated %}
               <li>
-                <a href="#" class="rounded-circle bg-light p-2 mx-1">
+                <a href="{% url 'userauthentications:sign-out' %}" class="rounded-circle bg-light p-2 mx-1">
+                  <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#sign-out"></use></svg>
+                </a>
+              </li>
+              {% else %}
+              <li>
+                <a href="{% url 'userauthentications:sign-in' %}" class="rounded-circle bg-light p-2 mx-1">
                   <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#user"></use></svg>
                 </a>
               </li>
+              {% endif %}
               <li>
                 <a href="#" class="rounded-circle bg-light p-2 mx-1">
                   <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#heart"></use></svg>
@@ -282,7 +293,19 @@
 
               </div>
           </div>
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                <strong>{{ message }}</strong>
+              </div>
+            {% endfor %}
+          {% endif %}
         </div>
+        <script>
+          setTimeout(()=>{
+              $(".alert").alert("close");
+          }, 3000)
+     </script>
       </div>
     </header>
 

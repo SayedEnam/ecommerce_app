@@ -1,0 +1,40 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="py-5 overflow-hidden">
+    <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-12">
+           <div class="brand-carousel swiper">
+             <div class="swiper-wrapper">
+               {% for brand in brands %}
+               <div class="swiper-slide">
+                 <div class="card mb-3 p-3 rounded-4 shadow border-0">
+                   <div class="row g-0">
+                     <div class="col-md-4">
+                       <img src="{{ brand.image.url }}" class="img-fluid rounded" alt="Card title">
+                     </div>
+                     <a href="{% url 'core:brand-product-list-view' brand.bid %}" class="nav-link category-item swiper-slide">
+                     <div class="col-md-8">
+                       <div class="card-body py-0">
+                         <p class="text-muted mb-0">{{ brand.title }}</p>
+                         <h5 class="card-title">{{ brand.description }}</h5>
+                       </div>
+                     </div>
+                     </a>
+                   </div>
+                 </div>
+               </div>
+               {% endfor %}
+             </div>
+           </div>
+
+         </div>
+       </div>
+    </div>
+  </section>
+
+
+{% endblock %}

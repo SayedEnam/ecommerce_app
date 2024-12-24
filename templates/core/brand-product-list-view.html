@@ -7,7 +7,7 @@
 <section class="py-5 mb-5" style="background: url(assets/images/background-pattern.jpg);">
     <div class="container-fluid">
       <div class="d-flex justify-content-between">
-        <h1 class="page-title pb-2">{{ category.title }}</h1>
+        <h1 class="page-title pb-2">{{ brand.title }}</h1>
         <nav class="breadcrumb fs-6">
           <a class="breadcrumb-item nav-link" href="#">Home</a>
           <a class="breadcrumb-item nav-link" href="#">Pages</a>
@@ -27,11 +27,11 @@
                     <span class="badge bg-success position-absolute m-3">-30%</span>
                     <a href="#" class="btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
                     <figure>
-                      <a href="{% url 'core:product-detail' p.pid %}" title="Product Title">
+                      <a href="single-product.html" title="Product Title">
                         <img src="{{ p.image.url }}" alt="Product Thumbnail" class="tab-image">
                       </a>
                     </figure>
-                    <a href="{% url 'core:product-detail' p.pid %}"><h3>{{ p.title }}</h3></a>
+                    <h3>{{ p.title }}</h3>
                     <span class="qty">1 Unit</span><span class="rating"><svg width="24" height="24" class="text-primary"><use xlink:href="#star-solid"></use></svg> 4.5</span>
                     <span class="price">${{ p.price }}</span>
                     <div class="d-flex align-items-center justify-content-between">

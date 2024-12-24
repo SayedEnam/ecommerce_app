@@ -88,7 +88,7 @@ class Product(models.Model):
 
     price = models.DecimalField(max_digits=99999999, decimal_places=2, default=1.99)
     old_price = models.DecimalField(max_digits=99999999, decimal_places=2, null=True, blank=True)
-    p_qty = models.IntegerField(default=0)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
     specifications = models.TextField(null=True, blank=True)
 
     # tags = models.ForeignKey(Tags, on_delete=models.SET_NULL, null=True)
@@ -122,7 +122,7 @@ class Product(models.Model):
     
 class ProductImages(models.Model):
     images = models.ImageField(upload_to="product-images", default="product.jpg")
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    product = models.ForeignKey(Product, related_name='p_image', on_delete=models.SET_NULL, null=True)
     date = models.DateTimeField(auto_now_add=True)
 
 

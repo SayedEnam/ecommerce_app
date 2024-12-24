@@ -4,8 +4,9 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth import logout
+from userauthentications.models import User
 
-User = settings.AUTH_USER_MODEL
+# User = settings.AUTH_USER_MODEL
 
 
 def register_view(request):
@@ -34,6 +35,7 @@ def register_view(request):
 
 def login_view(request):
     if request.user.is_authenticated:
+        messages.info(request, "You are already logged in.")
         return redirect("core:index")
 
     if request.method == "POST":
@@ -50,10 +52,9 @@ def login_view(request):
                 return redirect("core:index")
             else:
                 messages.warning(request, "User Does not exist, create an account.")
-
         except:
-           messages.warning(request, f"User with {email} does not exist")
-
+            messages.warning(request, f"User with email {email} does not exist.")
+        
 
     return render(request, "userauths/sign-in.html")
 
